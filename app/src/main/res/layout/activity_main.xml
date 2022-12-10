@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/photocover"
+    android:background="@drawable/mytodo"
     tools:context=".MainActivity">
 
     <EditText
@@ -16,7 +16,7 @@
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="Enter Your To Do Work"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -24,10 +24,66 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintVertical_bias="0.181" />
+
+    <EditText
+        android:id="@+id/edtxtDate"
+        android:layout_width="206dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="23dp"
+        android:clickable="false"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Today's Date"
+        android:inputType="date"
+        android:paddingStart="10sp"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.177" />
+
+    <TextView
+        android:id="@+id/txtvwToDoList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="140dp"
+        android:text="TASK"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReset"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <Button
+        android:id="@+id/btnView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="106dp"
+        android:backgroundTint="@color/purple_200"
+        android:text="VIEW"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnAdd"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtToDoWork"
+        app:layout_constraintVertical_bias="0.035" />
 
     <Button
         android:id="@+id/btnReset"
@@ -35,14 +91,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="22dp"
-        android:backgroundTint="#2D46DC"
+        android:layout_marginEnd="106dp"
+        android:backgroundTint="@color/purple_200"
         android:text="RESET"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnAdd"
         app:layout_constraintTop_toBottomOf="@+id/edtxtToDoWork"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.035"
+        tools:ignore="DuplicateClickableBoundsCheck" />
 
     <Button
         android:id="@+id/btnAdd"
@@ -50,16 +110,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="22dp"
-        android:backgroundTint="#2D46DC"
+        android:backgroundTint="@color/purple_200"
         android:text="ADD"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.243"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtxtToDoWork"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcyclrViewToDoList"
@@ -71,25 +131,46 @@
         android:paddingEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtvwToDoList"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.125" />
 
-    <TextView
-        android:id="@+id/txtvwToDoList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"
-        android:text="TO DO LIST"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="269dp"
+        android:layout_height="263dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/nothingtoshow"
+        android:contentDescription="animator"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846" />
+
+    <view
+        android:id="@+id/vwAboutApp"
+        style="@style/Animation.Design.BottomSheetDialog"
+        class="com.google.android.material.appbar.AppBarLayout"
+        android:layout_width="28dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="363dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:drawable/ic_dialog_info"
+        android:backgroundTint="#D81B60"
+        android:isScrollContainer="true"
+        android:keepScreenOn="true"
+        android:scrollbarThumbHorizontal="@android:drawable/ic_dialog_dialer"
+        app:layout_constraintBottom_toTopOf="@+id/edtxtToDoWork"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReset"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,7 @@ android {
     }
 }
 
+
 apply plugin: "kotlin-kapt"
 dependencies {
     def room_version = "2.4.1"

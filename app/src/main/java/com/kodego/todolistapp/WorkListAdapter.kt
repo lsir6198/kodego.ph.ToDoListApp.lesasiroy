@@ -1,13 +1,18 @@
 package com.kodego.todolistapp
 
+
 import android.graphics.Typeface
 import android.os.Build
+import android.text.AutoText
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.autofill.AutofillId
 import androidx.annotation.RequiresApi
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.kodego.todolistapp.databinding.RowItemBinding
+import java.time.Instant
+import java.util.Date
 
 
 class WorkListAdapter(var worklistModel: MutableList<WorkList>): RecyclerView.Adapter<WorkListAdapter.WorkListViewHolder>() {
@@ -15,6 +20,7 @@ class WorkListAdapter(var worklistModel: MutableList<WorkList>): RecyclerView.Ad
         var onItemDelete : ((WorkList, Int) -> Unit) ? = null
         var onEdit : ((WorkList, Int) -> Unit) ? = null
         var onView : ((WorkList, Int) -> Unit) ? = null
+
 
         inner class WorkListViewHolder(var binding: RowItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -28,6 +34,7 @@ class WorkListAdapter(var worklistModel: MutableList<WorkList>): RecyclerView.Ad
         override fun onBindViewHolder(holder: WorkListViewHolder, position: Int) {
             holder.binding.apply{
                 txtvwToDoWork.text = worklistModel[position].workList
+                txtvwDate.text = Date.from(Instant.now()).toString()
 
                 imgbtnDelete.setOnClickListener(){
                     onItemDelete?.invoke(worklistModel[position],position)
@@ -38,7 +45,7 @@ class WorkListAdapter(var worklistModel: MutableList<WorkList>): RecyclerView.Ad
                 view.setOnClickListener(){
                         onView?.invoke(worklistModel[position],position)
                         txtvwToDoWork.setTypeface(Typeface.DEFAULT_BOLD, Typeface.NORMAL)
-                        txtvwToDoWork.isEnabled = false
+                        imgbtnEdit.isEnabled = false
                         txtvwToDoWork.isAllCaps = true
                         txtvwToDoWork.setText("Done")
                         view.isInvisible = true

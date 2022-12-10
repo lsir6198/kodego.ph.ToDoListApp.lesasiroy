@@ -11,12 +11,15 @@ interface WorkListDao {
     fun addWork(employee: WorkList)
 
     @Query("SELECT * FROM WorkList")
-    fun getWorkList():MutableList<WorkList>
+    fun getAllWorkList():MutableList<WorkList>
 
-    @Query("UPDATE WorkList SET worklist = :workList WHERE number = :number")
-    fun updateWorkList(workList:String,number:Int)
+    @Query("UPDATE WorkList SET worklist = :workList WHERE listNumber = :listNumber")
+    fun updateWorkList(workList:String,listNumber:Int)
 
-    @Query("DELETE FROM WorkList WHERE number = :number")
-    fun deleteWorkList(number:Int)
+    @Query("DELETE FROM WorkList WHERE listNumber = :listNumber")
+    fun deleteWorkList(listNumber:Int)
+
+    @Query("DELETE FROM WorkList")
+    fun clearAllTask()
 }
 
